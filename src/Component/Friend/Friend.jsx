@@ -1,5 +1,8 @@
-export function Friend({ item }) {
-    return (
+import { useState } from "react";
+import Bill from "../Bill/Bill";
+export function Friend({ item, Update }) {
+    const [open, Setopen] = useState(false)
+    return (<div className="flex gap-3">
         <div className="group flex flex-col sm:flex-row items-center justify-between w-full max-w-lg bg-white hover:bg-indigo-50 border border-slate-100 p-4 my-3 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 gap-4">
             <div className="flex items-center gap-4">
                 <div className="relative">
@@ -22,10 +25,16 @@ export function Friend({ item }) {
                     </p>
                 </div>
             </div>
-
-            <button className="w-full sm:w-auto px-6 py-2.5 text-indigo-950 bg-amber-400 hover:bg-amber-500 font-bold rounded-xl transition-colors shadow-sm active:transform active:scale-95">
+            {!open ? (<button onClick={() => Setopen(!open)} className="w-full sm:w-auto px-6 py-2.5 text-indigo-950 bg-amber-400 hover:bg-amber-500 font-bold rounded-xl transition-colors shadow-sm active:transform active:scale-95">
                 Select
-            </button>
+            </button>) : (<button onClick={() => Setopen(!open)} className="w-full sm:w-auto px-6 py-2.5 text-white bg-indigo-600 hover:bg-indigo-700 font-bold rounded-xl transition-colors shadow-sm active:transform active:scale-95">
+                Close
+            </button>)}
+
+
+
         </div>
+        {open && <Bill Update={Update} item={item} />}
+    </div>
     );
 }

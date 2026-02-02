@@ -1,5 +1,5 @@
 import { useState } from "react"
-export function Form({ add }) {
+export function Form({ Add , Update }) {
 
     const [img, Setimg] = useState("")
     const [name, Setname] = useState("")
@@ -13,12 +13,8 @@ export function Form({ add }) {
             balance: 0,
             img,
         };
-
-        add(newFriend)
-
-
+        Add(newFriend)
     }
-
 
     return <form
         className="bg-slate-900 text-white w-full max-w-md p-8 rounded-2xl shadow-xl flex flex-col gap-6"
